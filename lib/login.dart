@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'pagina_principal.dart';
+import 'inicio.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginWeb extends StatelessWidget {
+  const LoginWeb({super.key});
 
   static const String titulo = 'Iniciar Sesión';
   static const TextStyle estiloTitulo = TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
@@ -30,7 +30,7 @@ class LoginPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (_) => const PaginaPrincipal()),
+                  MaterialPageRoute(builder: (_) => const InicioWeb()),
                 );
               },
               child: const Text('Ingresar', style: estiloTexto),

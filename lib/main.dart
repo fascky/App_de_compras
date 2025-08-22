@@ -1,6 +1,6 @@
 // lib/main.dart
+import 'package:app_de_compras/inicio.dart';
 import 'package:flutter/material.dart';
-import 'pagina_principal.dart'; // <-- importa tu widget principal
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const PaginaPrincipal(), // <-- esta es la vista inicial
+      home: const InicioWeb(), // <-- esta es la vista inicial
     );
   }
 }
