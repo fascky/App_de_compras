@@ -1,6 +1,8 @@
+import 'package:app_de_compras/dash_admin.dart';
 import 'package:flutter/material.dart';
 import 'inicio.dart';
 import 'registro.dart';
+
 
 class LoginWeb extends StatefulWidget {
   const LoginWeb({super.key});
@@ -12,13 +14,13 @@ class LoginWeb extends StatefulWidget {
 class _LoginWebState extends State<LoginWeb> {
   static const String titulo = 'Iniciar Sesión';
   static const TextStyle estiloTitulo = TextStyle(
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: FontWeight.w600,
     color: Colors.black87,
   );
   static const TextStyle estiloTexto = TextStyle(
     fontSize: 16,
-    color: Colors.black87,
+    color: Colors.white,
   );
 
   final _correoController = TextEditingController();
@@ -33,7 +35,7 @@ class _LoginWebState extends State<LoginWeb> {
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const InicioWeb()),
+        MaterialPageRoute(builder: (_) => const DashAdmin()),
       );
     }
   }
@@ -80,16 +82,16 @@ class _LoginWebState extends State<LoginWeb> {
         child: Center(
           child: SingleChildScrollView(
             child: Container(
-              padding: const EdgeInsets.all(32), // más espacioso
+              padding: const EdgeInsets.all(36), // más espacioso
               margin: const EdgeInsets.all(20),
-              constraints: const BoxConstraints(maxWidth: 480), // más ancho
+              constraints: const BoxConstraints(maxWidth: 500), // más ancho
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: const [
                   BoxShadow(
                     color: Colors.black26,
-                    blurRadius: 14,
+                    blurRadius: 16,
                     offset: Offset(0, 6),
                   ),
                 ],
@@ -110,15 +112,15 @@ class _LoginWebState extends State<LoginWeb> {
                       labelText: 'Correo electrónico',
                       labelStyle: const TextStyle(color: Colors.black54),
                       filled: true,
-                      fillColor: const Color(0xFFF8F1EC), // beige muy claro
+                      fillColor: const Color(0xFFF8F1EC), // beige clarito
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(14),
                         borderSide: BorderSide.none,
                       ),
                       prefixIcon: const Icon(Icons.email, color: Colors.black54),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 22),
                   TextField(
                     controller: _claveController,
                     obscureText: true,
@@ -128,30 +130,32 @@ class _LoginWebState extends State<LoginWeb> {
                       filled: true,
                       fillColor: const Color(0xFFF8F1EC),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(14),
                         borderSide: BorderSide.none,
                       ),
                       prefixIcon: const Icon(Icons.lock, color: Colors.black54),
                     ),
                   ),
-                  const SizedBox(height: 30),
-                  ElevatedButton(
+                  const SizedBox(height: 32),
+                  ElevatedButton.icon(
                     onPressed: _ingresar,
+                    icon: const Icon(Icons.login),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 18),
-                      backgroundColor: const Color.fromARGB(255, 245, 170, 146), // marrón elegante
+                      backgroundColor:
+                          const Color.fromARGB(255, 245, 170, 146), // marrón elegante
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14),
                       ),
                       elevation: 6,
                     ),
-                    child: const Text(
+                    label: const Text(
                       'Ingresar',
                       style: estiloTexto,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 24),
                   TextButton(
                     onPressed: _irARegistro,
                     child: const Text(
@@ -161,6 +165,7 @@ class _LoginWebState extends State<LoginWeb> {
                         color: Color(0xFF6D4C41),
                         decoration: TextDecoration.underline,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ],

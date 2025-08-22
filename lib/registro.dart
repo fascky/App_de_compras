@@ -141,6 +141,23 @@ class _RegistroPageState extends State<RegistroPage> {
                           const Icon(Icons.lock, color: Colors.black54),
                     ),
                   ),
+                  const SizedBox(height: 18),
+                  TextField(
+                    controller: _claveController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: 'Confirmar Contraseña',
+                      labelStyle: const TextStyle(color: Colors.black54),
+                      filled: true,
+                      fillColor: Color(0xFFF8F1EC),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                      prefixIcon:
+                          const Icon(Icons.lock, color: Colors.black54),
+                    ),
+                  ),
                   const SizedBox(height: 28),
                   ElevatedButton.icon(
                     onPressed: _registrarse,

@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  file_picker: ^8.1.2
   
   cupertino_icons: ^1.0.8
   animated_gradient: ^0.0.3  # <-- Cambia la versión aquí

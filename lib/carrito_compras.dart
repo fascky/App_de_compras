@@ -185,7 +185,11 @@ class _CarritoComprasState extends State<CarritoCompras> {
               child: Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.white, // ✅ ahora solo blanco
+                  gradient: const LinearGradient(
+                    colors: [Colors.white, Color(0xFFFED7C3)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
