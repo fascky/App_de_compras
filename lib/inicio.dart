@@ -98,9 +98,6 @@ class _HeroSectionState extends State<_HeroSection>
     );
   }
 
-  void _prev() => _goTo((_index - 1 + _slides.length) % _slides.length);
-  void _next() => _goTo((_index + 1) % _slides.length);
-
   @override
   void dispose() {
     _autoplay?.cancel();
@@ -113,23 +110,11 @@ class _HeroSectionState extends State<_HeroSection>
   Widget build(BuildContext context) {
     final isWide = MediaQuery.sizeOf(context).width >= 980;
     final double bannerHeight = isWide ? 360.0 : 520.0;
-    const double arrowBox = 40.0;
 
     return FocusableActionDetector(
       autofocus: true,
-      shortcuts: <LogicalKeySet, Intent>{
-        LogicalKeySet(LogicalKeyboardKey.arrowLeft): DirectionalFocusIntent(TraversalDirection.left),
-        LogicalKeySet(LogicalKeyboardKey.arrowRight): DirectionalFocusIntent(TraversalDirection.right),
-      },
-      actions: <Type, Action<Intent>>{
-        DirectionalFocusIntent: CallbackAction<DirectionalFocusIntent>(
-          onInvoke: (intent) {
-            if (intent.direction == TraversalDirection.left) _prev();
-            if (intent.direction == TraversalDirection.right) _next();
-            return null;
-          },
-        ),
-      },
+      shortcuts: const <LogicalKeySet, Intent>{},
+      actions: <Type, Action<Intent>>{},
       child: _FadeSlideIn(
         delay: const Duration(milliseconds: 80),
         child: LayoutBuilder(
@@ -202,20 +187,6 @@ class _HeroSectionState extends State<_HeroSection>
                       ),
                     );
                   },
-                ),
-
-                // Chevron izquierdo fuera del banner
-                Positioned(
-                  left: -14,
-                  top: (bannerHeight - arrowBox) / 2,
-                  child: _EdgeChevron(left: true, onTap: _prev),
-                ),
-
-                // Chevron derecho fuera del banner
-                Positioned(
-                  right: -14,
-                  top: (bannerHeight - arrowBox) / 2,
-                  child: _EdgeChevron(left: false, onTap: _next),
                 ),
 
                 // Indicadores
@@ -333,10 +304,10 @@ class _BlobAccent extends StatelessWidget {
         height: 220,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(28),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: const [Color(0xFFFFFFFF), Color(0x33FFFFFF)],
+            colors: [Color(0xFFFFFFFF), Color(0x33FFFFFF)],
           ),
           boxShadow: const [
             BoxShadow(
@@ -345,50 +316,6 @@ class _BlobAccent extends StatelessWidget {
               offset: Offset(0, 10),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-/// Chevron “fino” estilo >
-class _EdgeChevron extends StatefulWidget {
-  final bool left;
-  final VoidCallback onTap;
-  const _EdgeChevron({required this.left, required this.onTap});
-
-  @override
-  State<_EdgeChevron> createState() => _EdgeChevronState();
-}
-
-class _EdgeChevronState extends State<_EdgeChevron> {
-  bool _hover = false;
-
-  @override
-  Widget build(BuildContext context) {
-    const chevronColor = Color(0xFF7690C3);
-    const box = 40.0;
-
-    return MouseRegion(
-      onEnter: (_) => setState(() => _hover = true),
-      onExit: (_) => setState(() => _hover = false),
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: widget.onTap,
-        behavior: HitTestBehavior.opaque,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 180),
-          transformAlignment: Alignment.center,
-          transform: Matrix4.identity()..scale(_hover ? 1.08 : 1.0),
-          width: box,
-          height: box,
-          child: Icon(
-            widget.left
-                ? Icons.arrow_back_ios_new_rounded
-                : Icons.arrow_forward_ios_rounded,
-            size: 24,
-            color: chevronColor,
-          ),
         ),
       ),
     );
