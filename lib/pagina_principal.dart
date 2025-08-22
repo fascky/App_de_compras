@@ -1,11 +1,11 @@
+// lib/pagina_principal.dart
 import 'package:flutter/material.dart';
-import 'lista_produc.dart';
+import 'lista_produc.dart';     // verifica que el nombre del archivo coincida
 import 'carrito_compras.dart';
 
 class PaginaPrincipal extends StatelessWidget {
   const PaginaPrincipal({super.key});
 
-  // 🔸 Constantes de estilo dentro del mismo archivo
   static const String appNombre = 'App de Compras';
   static const TextStyle estiloTitulo = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
   static const TextStyle estiloTexto = TextStyle(fontSize: 16);
